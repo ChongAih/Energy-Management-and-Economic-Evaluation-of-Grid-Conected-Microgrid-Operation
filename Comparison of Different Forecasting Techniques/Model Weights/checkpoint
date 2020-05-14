@@ -1,0 +1,2 @@
+model_checkpoint_path: "TX_Load_k5_dm64_df64_l1_h4_weights.h5py"
+all_model_checkpoint_paths: "TX_Load_k5_dm64_df64_l1_h4_weights.h5py"
