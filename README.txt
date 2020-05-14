@@ -8,3 +8,5 @@ In any energy management solution, an accurate forecasting solution enhances the
 In this phase, we compare the performance of two algorithm - 1) the reinforcement learning (Q-learning) without any future knowledge, 2) the model predictive control with the forecasted data
 
 3. Phase 3 - user graphical interface
+
+** Note that the original script is coded in google colab, thus changes to all the model weights or file directory are needed in the event of reuse of code
