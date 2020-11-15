@@ -1,0 +1,1178 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 2,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {
+        "price (cents/kWh)": "blue"
+      },
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "localhost-energy",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "hideTimeOverride": false,
+      "id": 4,
+      "interval": "",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.5.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "price (cents/kWh)",
+          "groupBy": [
+            {
+              "params": [
+                "5s"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "sensor",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"price (cents/kWh)\") FROM \"sensor\" WHERE $timeFilter GROUP BY time(1h) fill(none)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "price (cents/kWh)"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Price",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Price (cents/kWh)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "localhost-energy",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 12,
+        "y": 0
+      },
+      "id": 10,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.5.1",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "$",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "case"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "result",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "cost ($)"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "case",
+              "operator": "=",
+              "value": "ESS_MPC"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Cost (ESS MPC)",
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "localhost-energy",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 15,
+        "y": 0
+      },
+      "id": 12,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.5.1",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "$",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "case"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "result",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "cost ($)"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "case",
+              "operator": "=",
+              "value": "ESS_RLRA"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Cost (ESS RLRA)",
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "localhost-energy",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 18,
+        "y": 0
+      },
+      "id": 13,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.5.1",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "$",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "case"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "result",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "cost ($)"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "case",
+              "operator": "=",
+              "value": "ESS_RLRS"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Cost (ESS RLRS)",
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "localhost-energy",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 21,
+        "y": 0
+      },
+      "id": 11,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "pluginVersion": "6.5.1",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "$",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "case"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "result",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "cost ($)"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "case",
+              "operator": "=",
+              "value": "WOESS"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Cost (Without ESS)",
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "datasource": "localhost-energy",
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 12,
+        "y": 3
+      },
+      "id": 7,
+      "options": {
+        "displayMode": "lcd",
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0.5
+              }
+            ]
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "vertical"
+      },
+      "pluginVersion": "6.5.1",
+      "targets": [
+        {
+          "groupBy": [],
+          "measurement": "result",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"SOC\") FROM \"result\" WHERE (\"case\" = 'ESS_RLRA') AND $timeFilter GROUP BY time(1s) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "soc"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "case",
+              "operator": "=",
+              "value": "ESS_MPC"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "ESS SOC (MPC)",
+      "type": "bargauge"
+    },
+    {
+      "datasource": "localhost-energy",
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 15,
+        "y": 3
+      },
+      "id": 8,
+      "options": {
+        "displayMode": "lcd",
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0.5
+              }
+            ]
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "vertical"
+      },
+      "pluginVersion": "6.5.1",
+      "targets": [
+        {
+          "groupBy": [],
+          "measurement": "result",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"SOC\") FROM \"result\" WHERE (\"case\" = 'ESS_RLRA') AND $timeFilter GROUP BY time(1s) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "soc"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "case",
+              "operator": "=",
+              "value": "ESS_RLRA"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "ESS SOC (RLRA)",
+      "type": "bargauge"
+    },
+    {
+      "datasource": "localhost-energy",
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 18,
+        "y": 3
+      },
+      "id": 16,
+      "options": {
+        "displayMode": "lcd",
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 1,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0.5
+              }
+            ]
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "vertical"
+      },
+      "pluginVersion": "6.5.1",
+      "targets": [
+        {
+          "groupBy": [],
+          "measurement": "result",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"SOC\") FROM \"result\" WHERE (\"case\" = 'ESS_RLRA') AND $timeFilter GROUP BY time(1s) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "soc"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "case",
+              "operator": "=",
+              "value": "ESS_RLRA"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "ESS SOC (RLRA)",
+      "type": "bargauge"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "localhost-energy",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "load (kW)",
+          "groupBy": [
+            {
+              "params": [
+                "5s"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "sensor",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"power\" WHERE (\"uuid\" = '0CEFAFCC8B2D') AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Load (kWh)"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "PV (kW)",
+          "groupBy": [
+            {
+              "params": [
+                "5s"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "sensor",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"power\" WHERE (\"uuid\" = '0CEFAFCC8B2D') AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "PV (kWh)"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Load & Solar",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Power (kW)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "MPC": "red",
+        "RLRA": "light-blue",
+        "RLRS": "green"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "localhost-energy",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "hiddenSeries": false,
+      "id": 15,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "MPC",
+          "groupBy": [],
+          "measurement": "result",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "action"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "case",
+              "operator": "=",
+              "value": "ESS_MPC"
+            }
+          ]
+        },
+        {
+          "alias": "RLRA",
+          "groupBy": [],
+          "measurement": "result",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "action"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "case",
+              "operator": "=",
+              "value": "ESS_RLRA"
+            }
+          ]
+        },
+        {
+          "alias": "RLRS",
+          "groupBy": [],
+          "measurement": "result",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "action"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "case",
+              "operator": "=",
+              "value": "ESS_RLRS"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "ESS Action",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": "1.25",
+          "min": "-1.25",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": " 1s",
+  "schemaVersion": 21,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      " 1s",
+      " 2s"
+    ]
+  },
+  "timezone": "browser",
+  "title": "EnergyManagementDemoImport",
+  "uid": "LSYreEMGz",
+  "version": 33
+}
